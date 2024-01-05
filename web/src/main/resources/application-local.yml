@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/learnspace
+    username: postgres
+    password: 12345
+
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${keycloak.server}/realms/${keycloak.realm}
+
+
+MAIL_HOST: smtp.gmail.com
+MAIL_PORT: 465
+MAIL_USERNAME: lekan.sofuyi01@gmail.com
+MAIL_PASSWORD: ldxugtzrrniwbncu
+
+keycloak:
+  server: http://localhost:8090
+  username: admin
+  password: admin
+  realm: learnspace
+  client: learnspace
+  principal_attribute: preferred_username
+
+
+
+jwt:
+  secret: ${JWT_SECRET:XG0cRLFGnxDhCyy6ZDmLA2Ei1NLYNEh5Pb6sBzNhh9jjEb02AABKSI2/LYrUU0c8hhUbrYhf9cxmc8Y2g9UFyg==}
+  expiration: ${JWT_EXPIRATION:86400000}
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+

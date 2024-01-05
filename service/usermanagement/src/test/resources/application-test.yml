@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:learnspace
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${keycloak.server}/realms/${keycloak.realm}
+
+
+keycloak:
+  server: http://localhost:8090
+  username: admin
+  password: admin
+  realm: learnspace
+  client: learnspace
+  principal_attribute: preferred_username

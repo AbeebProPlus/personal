@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO}
+    database: postgresql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${keycloak.server}/realms/${keycloak.realm}
+
+
+MAIL_HOST: ${MAIL_HOST}
+MAIL_PORT: ${MAIL_PORT}
+MAIL_USERNAME: ${MAIL_USERNAME}
+MAIL_PASSWORD: ${MAIL_PASSWORD}
+
+keycloak:
+  server: ${KEYCLOAK_SERVER}
+  username: ${KEYCLOAK_USERNAME}
+  password: ${KEYCLOAK_PASSWORD}
+  realm: ${KEYCLOAK_REALM}
+  client: ${KEYCLOAK_CLIENT}
+  principal_attribute: preferred_username
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
